@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Marion Rosen - Psiquiatria Moderna & Medicina Integrativa</title>
+    <meta name="description" content="Consultório médico que integra Psiquiatria Moderna e Medicina Integrativa para cuidado global. Atendimento presencial e online.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #a06d82;
+            --secondary-color: #D4A574;
+            --accent-color: #F5E6D3;
+            --dark-color: #2C1810;
+            --light-color: #FAF7F4;
+            --text-dark: #3A2817;
+            --text-light: #6B5B4F;
+            --gradient-primary: linear-gradient(135deg, #b46b96 0%, #D4A574 100%);
+            --gradient-secondary: linear-gradient(135deg, #F5E6D3 0%, #FAF7F4 100%);
+            --shadow-soft: 0 10px 40px rgba(139, 75, 156, 0.1);
+            --shadow-strong: 0 20px 60px rgba(139, 75, 156, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(139, 75, 156, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            background: var(--gradient-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(139,75,156,0.03)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-image {
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-strong);
+            transition: all 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card.card-1 {
+            top: 20%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .floating-card.card-2 {
+            bottom: 20%;
+            right: -10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Quote Section */
+        .quote-section {
+            padding: 80px 0;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 75, 156, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--gradient-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 30px;
+        }
+
+        .credentials-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .credentials-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(139, 75, 156, 0.1);
+            color: var(--text-light);
+        }
+
+        .credentials-list li:before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Ebook Section */
+        .ebook-section {
+            padding: 100px 0;
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+        }
+
+        .ebook-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .ebook-image {
+            width: 200px;
+            height: auto;
+            margin: 0 auto 40px;
+            box-shadow: var(--shadow-strong);
+            border-radius: 15px;
+        }
+
+        .download-button {
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        .download-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: var(--gradient-secondary);
+            padding: 50px;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(139, 75, 156, 0.2);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 75, 156, 0.1);
+        }
+
+        .submit-button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--light-color);
+            border-radius: 15px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 20px;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3); }
+            50% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6); }
+            100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3); }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content,
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .quote-text {
+                font-size: 1.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .service-card,
+            .contact-form {
+                padding: 25px;
+            }
+
+            .whatsapp-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">Dra. Natacha Capozzi</div>
+            <a href="#contato" class="cta-button">Agendar Consulta</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="fade-in">Cuidado Integral para sua Saúde Mental</h1>
+                    <p class="hero-subtitle fade-in">Psiquiatria Moderna + Medicina Integrativa</p>
+                    <p class="hero-description fade-in">
+                        Consultório médico que integra os conhecimentos da Psiquiatria Moderna aos da Medicina Integrativa e do Estilo de Vida para o cuidado global do indivíduo.
+                    </p>
+                    <div class="fade-in">
+                        <a href="#contato" class="cta-button">Agendar Consulta Agora</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="doutora.png" alt="Dra.Natacha Capozzi" class="scale-in">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-heart" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                        <p style="margin-top: 10px; font-weight: 600;">Atendimento Humanizado</p>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-laptop-medical" style="color: var(--secondary-color); font-size: 1.5rem;"></i>
+                        <p style="margin-top: 10px; font-weight: 600;">Consultas Online</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <p class="quote-text fade-in">"Nós sabemos que nós não podemos curar pessoas, mas podemos ajudá-las a curarem a si mesmas"</p>
+            <p class="quote-author fade-in">Marion Rosen</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Especialidades</h2>
+                <p class="section-subtitle fade-in">Tratamentos especializados com abordagem integrativa e personalizada</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="service-title">Ansiedade</h3>
+                    <p class="service-description">
+                        Tratamento especializado para ansiedade, preocupação exagerada, agitação e sintomas físicos. Abordagem integrativa que considera aspectos psíquicos e físicos para restaurar o bem-estar completo.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="service-title">Síndrome do Pânico</h3>
+                    <p class="service-description">
+                        Acompanhamento especializado para crises de pânico, com estratégias para controle dos episódios e prevenção de futuros ataques. Tratamento focado na qualidade de vida.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3 class="service-title">Depressão</h3>
+                    <p class="service-description">
+                        Tratamento abrangente para depressão, combinando psicoterapia estruturada, medicamentos e abordagens integrativas para acelerar a recuperação e restaurar o significado da vida.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="service-title">Transtorno Bipolar</h3>
+                    <p class="service-description">
+                        Acompanhamento especializado para episódios de humor, oferecendo estabilização e estratégias para manejo dos sintomas de mania, hipomania e depressão.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-focus"></i>
+                    </div>
+                    <h3 class="service-title">TDAH</h3>
+                    <p class="service-description">
+                        Diagnóstico e tratamento do Transtorno de Déficit de Atenção e Hiperatividade, com abordagem personalizada para crianças e adultos, melhorando funcionamento acadêmico e profissional.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="service-title">Cannabis Medicinal</h3>
+                    <p class="service-description">
+                        Prescrição e acompanhamento terapêutico em Cannabis Medicinal segundo legislação vigente, para epilepsia, fibromialgia, dores crônicas e outras condições.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="fade-in">Formação e Experiência</h2>
+                    <p class="fade-in">
+                        Com sólida formação acadêmica e vasta experiência clínica, combino conhecimentos da Psiquiatria Moderna com abordagens da Medicina Integrativa para oferecer um cuidado completo e personalizado.
+                    </p>
+                    <ul class="credentials-list fade-in">
+                        <li>Graduação em Medicina - Faculdade de Medicina do ABC</li>
+                        <li>Pós-Graduação em Medicina Integrativa - Einstein</li>
+                        <li>Pós-Graduação em Psiquiatria - Santa Casa de São Paulo</li>
+                        <li>Formação em Mindfulness Based Relapse Prevent - UNIFESP</li>
+                        <li>Curso Clínica Psiquiátrica - IPQ FMUSP</li>
+                        <li>Professora Universitária - Faculdade de Medicina do ABC</li>
+                        <li>Membro do Brazilian Institute of Psychopharmacology</li>
+                        <li>Médica colaboradora - Grupo de Psicose IPQ HCFMUSP</li>
+                        <li>Co-autora do livro "Cracolândia Dia a Dia"</li>
+                    </ul>
+                </div>
+                <div class="about-image fade-in">
+                    <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: var(--shadow-soft);">
+                        <h3 style="font-family: 'Playfair Display', serif; color: var(--dark-color); margin-bottom: 20px;">Nossa Clínica</h3>
+                        <p style="color: var(--text-light); margin-bottom: 20px;">
+                            Localizada em uma das principais avenidas de Santos, em posição central e privilegiada.
+                        </p>
+                        <div class="info-item" style="background: var(--gradient-secondary); margin-bottom: 15px;">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <strong>Endereço:</strong><br>
+                                Av. Conselheiro Nebias, 628 SL 44<br>
+                                Boqueirão - Santos - SP
+                            </div>
+                        </div>
+                        <div class="info-item" style="background: var(--gradient-secondary);">
+                            <div class="info-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div>
+                                <strong>Atendimento Online</strong><br>
+                                Seguindo orientações do CFM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ebook Section -->
+    <section class="ebook-section">
+        <div class="container">
+            <div class="ebook-content">
+                <h2 class="section-title fade-in" style="color: white; margin-bottom: 30px;">Material Exclusivo</h2>
+                <img src="ebook.png" alt="Ebook Gratuito" class="ebook-image fade-in">
+                <h3 class="fade-in" style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px;">
+                    Guia Completo de Saúde Mental
+                </h3>
+                <p class="fade-in" style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
+                    Baixe gratuitamente nosso guia com informações valiosas sobre cuidados com a saúde mental, 
+                    técnicas de bem-estar e orientações para uma vida mais equilibrada.
+                </p>
+                <a href="ebook.png" download="Guia-Saude-Mental-Dra-Marion-Rosen.png" class="download-button fade-in">
+                    <i class="fas fa-download" style="margin-right: 10px;"></i>
+                    Baixar Ebook Gratuito
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Agende sua Consulta</h2>
+                <p class="section-subtitle fade-in">
+                    Nossa equipe está pronta para esclarecer suas dúvidas e oferecer o suporte necessário para o seu bem-estar
+                </p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-form fade-in">
+                    <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 30px; color: var(--dark-color);">
+                        Envie sua Mensagem
+                    </h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva brevemente o que você gostaria de tratar na consulta..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+                <div class="contact-info fade-in">
+                    <h3>Informações de Contato</h3>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <strong>Endereço</strong><br>
+                            Av. Conselheiro Nebias, 628 SL 44<br>
+                            Boqueirão - Santos - SP
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <strong>WhatsApp</strong><br>
+                            (11) 96583-4824
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <strong>Horário de Atendimento</strong><br>
+                            Segunda a Sexta: 8h às 18h<br>
+                            Sábado: 8h às 12h
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <div>
+                            <strong>Modalidades</strong><br>
+                            Presencial e Online<br>
+                            Conforme orientações do CFM
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Dra. Marion Rosen. Todos os direitos reservados.</p>
+            <p>CRM: [Número do CRM] | Desenvolvido com cuidado para sua saúde mental</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5511965834824?text=Olá%20Dra!%20Gostaria%20de%20ter%20atendimento%20com%20você" 
+       class="whatsapp-button" 
+       target="_blank" 
+       aria-label="Falar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in or scale-in classes
+        document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const mensagem = document.getElementById('mensagem').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Olá Dra! Gostaria de ter atendimento com você.
+
+*Nome:* ${nome}
+*E-mail:* ${email}
+*Telefone:* ${telefone}
+*Mensagem:* ${mensagem}`;
+            
+            const whatsappUrl = `https://wa.me/5511965834824?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message
+            alert('Redirecionando para o WhatsApp. Sua mensagem foi preparada!');
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                const speed = scrolled * 0.5;
+                hero.style.transform = `translateY(${speed}px)`;
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.3s ease';
+        });
+
+        // Initialize
+        document.body.style.opacity = '0';
+    </script>
+</body>
+</html>
